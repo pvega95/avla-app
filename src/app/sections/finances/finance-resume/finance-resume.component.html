@@ -1,0 +1,30 @@
+<div class="finance">
+  <ng-container *ngIf="financeResume.length > 0; else noFinances">
+    <table
+      mat-table
+      [dataSource]="financeResume"
+      class="finance__table m-auto"
+    >
+      <!-- Number Column -->
+      <ng-container matColumnDef="month">
+        <th mat-header-cell *matHeaderCellDef>month</th>
+        <td mat-cell *matCellDef="let row">{{ row.month }}</td>
+      </ng-container>
+
+      <!-- Title Column -->
+      <ng-container matColumnDef="value">
+        <th mat-header-cell *matHeaderCellDef>value</th>
+        <td mat-cell *matCellDef="let row">{{ row.value }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </ng-container>
+
+  <ng-template #noFinances>
+    <div class="finance__img d-flex">
+      <img class="m-auto" src="assets/6358482.jpg" alt="no_data">
+    </div>
+  </ng-template>
+</div>

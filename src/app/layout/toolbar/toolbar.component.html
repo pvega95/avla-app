@@ -1,0 +1,16 @@
+<mat-toolbar>
+
+
+  <span class="welcome dl-subheading-sm">Bienvenido,</span>
+
+  <span class="spacer"></span>
+
+
+  <button qa-id="toolbar-btn-menu" mat-icon-button class="avatar-header" [matMenuTriggerFor]="menu"></button>
+  <mat-menu #menu="matMenu">
+    <button  mat-flat-button class="text-darkest" qa-id="toolbar-btn-logout">
+      
+      Cerrar sesión
+    </button>
+  </mat-menu>
+</mat-toolbar>

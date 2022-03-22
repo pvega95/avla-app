@@ -1,0 +1,35 @@
+stages:
+  - build
+  - test
+  - deploy
+
+BUILD:
+  image: node:12
+  stage: build
+  script:
+    - npm install -g @angular/cli
+    - npm install
+    - ng build --prod
+    - echo "BUILD SUCCESSFUL"
+  artifacts:
+    paths:
+      - dist/
+      - node_modules/
+  only:
+    - master
+
+TEST:
+  stage: test
+  script:
+    - echo "All test Passed"
+  
+DEPLOYMENT:
+  stage: deploy
+  image: python:latest
+  script:
+    - pip install awscli
+    - aws s3 rm --recursive s3://$AWS_BUCKET/
+    - aws s3 cp ./dist/e-commerce s3://$AWS_BUCKET/ --recursive
+    - aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+  only:
+    - master

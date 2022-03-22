@@ -1,0 +1,25 @@
+<h1 class="">Bienvenido a tus finanzas</h1>
+<p>Porfavor llene los campos con los filtros</p><br>
+<form [formGroup]="financeForm" (ngSubmit)="onSubmit(financeForm)" class="finance__filter d-flex justify-content-between align-items-center">
+  <mat-form-field appearance="fill">
+    <mat-label>Familia</mat-label>
+    <mat-select formControlName="familyControl">
+      <mat-option *ngFor="let family of families" [value]="family">{{ family }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Metrica</mat-label>
+    <mat-select formControlName="metricControl">
+      <mat-option *ngFor="let metric of metrics" [value]="metric">{{ metric }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Año</mat-label>
+    <input formControlName="yearControl" matInput>
+  </mat-form-field>
+  <div>
+    <button type="submit" mat-raised-button color="accent" [disabled]="!financeForm.valid">Buscar</button>
+    <button type="button" mat-button (click)="clear()" class="ms-2" [disabled]="!financeForm.valid">Limpiar</button>
+  </div>
+  
+</form>

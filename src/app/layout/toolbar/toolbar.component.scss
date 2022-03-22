@@ -1,0 +1,25 @@
+
+.mat-toolbar {
+  height: 60px;
+  .welcome {
+    display: none;
+    // font-size: 16px;
+  }
+  .logo {
+    display: flex;
+    max-width: 89px;
+    margin-left: 15px;
+  }
+  .mat-button-base:nth-child(n + 2) {
+    margin-left: 8px;
+  }
+}
+
+.avatar-header {
+  background-image: url('https://i.kym-cdn.com/photos/images/masonry/000/581/083/6d7.gif');
+  background-size: cover;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+
